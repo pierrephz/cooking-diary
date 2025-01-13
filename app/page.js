@@ -42,7 +42,7 @@ export default function Home() {
         onClose={() => setIsDialogOpen(false)}
         onSubmit={handleAddPost}
       />
-      <div className="container mx-auto p-4 flex flex-col items-center">
+      <div className="container mx-auto flex flex-col items-center gap-16">
         {posts.map((post, index) => (
           <PostCard key={index} {...post} />
         ))}

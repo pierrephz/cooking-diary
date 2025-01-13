@@ -14,6 +14,15 @@ const Dialog = ({ isOpen, onClose, onSubmit }) => {
   const [errors, setErrors] = useState({});
   const dialogRef = useRef(null);
 
+  const resetState = () => {
+    setGuests("");
+    setDish("");
+    setDate("");
+    setNote("");
+    setPhoto(null);
+    setErrors({});
+  };
+
   const onDrop = (acceptedFiles) => {
     setPhoto(acceptedFiles[0]);
   };
@@ -47,18 +56,21 @@ const Dialog = ({ isOpen, onClose, onSubmit }) => {
     };
     onSubmit(post);
     onClose();
+    resetState();
   };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
+        resetState();
       }
     };
 
     const handleClickOutside = (e) => {
       if (dialogRef.current && !dialogRef.current.contains(e.target)) {
         onClose();
+        resetState();
       }
     };
 
@@ -70,6 +82,12 @@ const Dialog = ({ isOpen, onClose, onSubmit }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
+
+  useEffect(() => {
+    if (isOpen) {
+      resetState();
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -160,7 +178,13 @@ const Dialog = ({ isOpen, onClose, onSubmit }) => {
             setErrors={setErrors}
           />
           <div className="flex justify-end space-x-4">
-            <Button onClick={onClose} variant="neutral">
+            <Button
+              onClick={() => {
+                onClose();
+                resetState();
+              }}
+              variant="neutral"
+            >
               Cancel
             </Button>
             <Button type="submit" variant="primary">
