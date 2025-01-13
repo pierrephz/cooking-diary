@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Button from "../components/Button";
+import { IconChefHat } from "@tabler/icons-react";
 
 const Header = ({ onAddClick }) => {
   return (
@@ -24,12 +26,9 @@ const Header = ({ onAddClick }) => {
               </Link>
             </li>
           </ul>
-          <button
-            onClick={onAddClick}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-          >
-            Add Cooking Entry
-          </button>
+          <Button onClick={onAddClick} icon={IconChefHat} variant="primary">
+            Post
+          </Button>
         </nav>
       </div>
     </header>

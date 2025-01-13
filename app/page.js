@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Dialog from "../components/Dialog";
 import PostCard from "../components/PostCard";
+import Button from "../components/Button";
 
 export default function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -16,25 +17,24 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-100 flex flex-col items-center py-36">
+    <div className="min-h-screen flex flex-col items-center py-36">
       <Header onAddClick={() => setIsDialogOpen(true)} />
       {posts.length === 0 && (
-        <div className="text-center text-2xl font-semibold">
-          Welcome in your cooking diary!
-        </div>
-      )}
-      {posts.length === 0 && (
-        <div className="text-center text-base">
-          <p>
-            Here you can document your cooking journey by adding posts with
-            photos, guests, dishes you cooked.
-          </p>
-          <button
+        <div className="flex flex-col items-center justify-center flex-grow">
+          <h1 className="text-4xl font-semibold mb-2">
+            Welcome in your cooking diary!
+          </h1>
+          <h3 className="text-xl text-gray-500">
+            Here you can document your cooking journey by adding posts including
+            photos, guests, the dishes you cooked.
+          </h3>
+          <Button
             onClick={() => setIsDialogOpen(true)}
-            className="bg-blue-500 text-white px-4 py-2 rounded mx-auto mt-4"
+            className="mt-8"
+            variant="primary"
           >
-            Add Cooking Entry
-          </button>
+            Post your first memory
+          </Button>
         </div>
       )}
       <Dialog
