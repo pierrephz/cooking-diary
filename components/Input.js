@@ -21,7 +21,7 @@ const Input = ({
   };
 
   return (
-    <div className="mb-4">
+    <div>
       <label className="block text-sm font-medium mb-1">{label}</label>
       {textarea ? (
         <textarea
@@ -43,7 +43,7 @@ const Input = ({
           required={required}
         />
       )}
-      {error && <p className="absolute text-red-500 text-sm mt-1">{error}</p>}
+      {error && <p className="absolute text-red-500 text-sm">{error}</p>}
     </div>
   );
 };

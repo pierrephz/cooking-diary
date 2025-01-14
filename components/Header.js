@@ -7,7 +7,7 @@ const Header = ({ onAddClick }) => {
   return (
     <header className="bg-white p-4 fixed w-full top-0 backdrop-blur-xl bg-white/30 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Cooking History</h1>
+        <h1 className="text-2xl font-bold">Cooking diary</h1>
         <nav className="flex items-center space-x-4">
           <ul className="flex space-x-8 hidden">
             <li>
