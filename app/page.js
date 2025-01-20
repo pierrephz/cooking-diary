@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Dialog from "../components/Dialog";
 import PostCard from "../components/PostCard";
-import Button from "../components/Button";
+import {Button} from "@heroui/react";
+import { IconChefHat } from "@tabler/icons-react";
+
 
 export default function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -17,22 +19,18 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-36">
+    <main className="min-h-screen flex flex-col items-center">
       <Header onAddClick={() => setIsDialogOpen(true)} />
       {posts.length === 0 && (
         <div className="flex flex-col items-center justify-center flex-grow">
           <h1 className="text-4xl font-semibold mb-2">
             Welcome in your cooking diary!
           </h1>
-          <h3 className="text-xl text-gray-500">
+          <h3 className="text-xl text-gray-500 mb-8">
             Here you can document your cooking journey by adding posts including
             photos, guests, the dishes you cooked.
           </h3>
-          <Button
-            onClick={() => setIsDialogOpen(true)}
-            className="mt-8"
-            variant="primary"
-          >
+          <Button color="primary" variant="shadow" size="lg"  endContent={<IconChefHat />} onClick={() => setIsDialogOpen(true)}>
             Post your first memory
           </Button>
         </div>
@@ -47,6 +45,6 @@ export default function Home() {
           <PostCard key={index} {...post} />
         ))}
       </div>
-    </div>
+    </main>
   );
 }
